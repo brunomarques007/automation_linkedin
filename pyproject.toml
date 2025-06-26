@@ -1,0 +1,36 @@
+[project]
+name = "likedin"
+version = "0.1.0"
+description = "Esse bot automatiza o processo de envio de mensagens no LinkedIn."
+authors = [
+    {name = "Bruno Marques",email = "bruno.marques@brma.com.br"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "selenium (>=4.33.0,<5.0.0)",
+    "openai (>=1.91.0,<2.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+exclude = [".venv"]
+
+[tool.ruff.lint]
+preview = true
+select = ["I", "F", "E", "W", "PL", "PT"]
+
+[tool.ruff.format]
+preview = true
+quote-style = "double"
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.0"
+
+[tool.taskipy.tasks]
+lint = "ruff check ."
+format = "ruff format ."
+pre_format = "ruff check --fix ."
